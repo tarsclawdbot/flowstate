@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0A0C10;
+  --color-surface: #0F1219;
+  --color-surface-elevated: #161B26;
+  --color-border-subtle: #1E2535;
+  --color-border-bright: #2A3548;
+  
+  --color-primary-blue: #3B82F6;
+  --color-accent-cyan: #06B6D4;
+  --color-accent-purple: #8B5CF6;
+  
+  --color-success-green: #10B981;
+  --color-warning-amber: #F59E0B;
+  --color-danger-red: #EF4444;
+
+  --color-text-primary: #F1F5F9;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #4B5563;
+
+  --animate-score-draw: score-draw 1.2s ease-out forwards;
+  --animate-cell-pulse: cell-pulse 2s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.5s ease-out forwards;
+}
+
+:root {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-bright);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* Background utilities */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(to right, var(--color-accent-cyan), var(--color-primary-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glow effects */
+.glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), 0 0 40px rgba(59, 130, 246, 0.05);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+/* Animations */
+@keyframes score-draw {
+  from { stroke-dashoffset: 440; }
+  to { stroke-dashoffset: var(--target-offset); }
+}
+
+@keyframes cell-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Utility classes for animation delays */
+.delay-100 { animation-delay: 100ms; opacity: 0; }
+.delay-200 { animation-delay: 200ms; opacity: 0; }
+.delay-300 { animation-delay: 300ms; opacity: 0; }
+.delay-400 { animation-delay: 400ms; opacity: 0; }
